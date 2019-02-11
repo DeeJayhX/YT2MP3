@@ -3,11 +3,17 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Media Files
+*.mp4
+*.mp3
+
 # C extensions
 *.so
 
 # Distribution / packaging
 .Python
+*.pyproj
+*.exe*
 build/
 develop-eggs/
 dist/
