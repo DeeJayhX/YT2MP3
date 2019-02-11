@@ -1,3 +1,26 @@
+###############################
+### YT2MP3                  ###
+### By: Ruined1 aka DeeJayh ###
+###############################
+### This program allows you ###
+### to queue up a list of   ###
+### YouTube MP4s to convert ###
+### to MP3s.                ###
+###############################
+
+## System Requirements:
+## Windows 7 or Newer, 64-bit only
+## Does not currently support 32-bit, linux, mac, or any other OS
+
+## Using FFMPEG by the FFmpeg team.
+## Purpose in this project: Convert mp4 files to mp3 audio.
+## Website: https://www.ffmpeg.org/
+## Build: ffmpeg-20190211-6174686-win64-static
+## Source code available from the official repositories: https://www.ffmpeg.org/download.html#repositories
+## I am using FFmpeg unmodified and so no source changes have been made.
+## If you are an FFmpeg developer/team member/etc and I have not properly accredited your work, please advise
+## me how to correct it and I will be happy to oblige.
+
 from threading import Thread
 import pytube as pt
 import sys
@@ -6,15 +29,6 @@ import tempfile
 import base64
 import subprocess
 import ffmpeg_encoded
-
-##Using FFMPEG by the FFmpeg team.
-##Purpose in this project: Convert mp4 files to mp3 audio.
-##Website: https://www.ffmpeg.org/
-##Build: ffmpeg-20190211-6174686-win64-static
-##Source code available from the official repositories: https://www.ffmpeg.org/download.html#repositories
-##I am using FFmpeg unmodified and so no source changes have been made.
-##If you are an FFmpeg developer/team member/etc and I have not properly accredited your work, please advise
-##me how to correct it and I will be happy to oblige.
 
 #Instantiate variables
 downloadList = []
