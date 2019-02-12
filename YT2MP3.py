@@ -39,12 +39,13 @@ downloadList = []
 convertList = []
 threads = []
 dir = os.getcwd()
+version = "1.0"
 
 #program introduction
-print("Welcome to YT2MP3.\nAutomatically downloads "
+print("Welcome to YT2MP3 v{0}.\nAutomatically downloads "
       "and converts YouTube videos to MP3 format.\n"
       "No malware, no nonsense, just a clean and "
-      "simple, open-source client.")
+      "simple, open-source client.".format(version))
 
 #function to download mp4s from urls provided
 def Download_mp4(url,downloadList):
