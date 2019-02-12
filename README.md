@@ -31,7 +31,7 @@ time to complete.
 utilize FFmpeg to convert any .mp4 files in the directory to .mp3 and then delete
 the .mp4 copies once the .mp3 is finished.
 
-   *Note that this will happen to ALL MP4s IN THE DIRECTORY* so you can also use
+   **Note that this will happen to ALL MP4s IN THE DIRECTORY** so you can also use
    YT2MP3 as a simple converter to turn .mp4 files into .mp3 files. This is thanks
    to the magic that FFmpeg brings to the table. This is a double edge sword, so
    do NOT run YT2MP3 in a directory with .mp4 files you do not wish to lose.
@@ -63,7 +63,7 @@ time to complete.
 utilize FFmpeg to convert any .mp4 files in the directory to .mp3 and then delete
 the .mp4 copies once the .mp3 is finished.
 
-   *Note that this will happen to ALL MP4s IN THE DIRECTORY* so you can also use
+   **Note that this will happen to ALL MP4s IN THE DIRECTORY** so you can also use
    YT2MP3 as a simple converter to turn .mp4 files into .mp3 files. This is thanks
    to the magic that FFmpeg brings to the table. This is a double edge sword, so
    do NOT run YT2MP3 in a directory with .mp4 files you do not wish to lose.
