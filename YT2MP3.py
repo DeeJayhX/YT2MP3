@@ -18,6 +18,10 @@
 ## Build: ffmpeg-20190211-6174686-win64-static
 ## Source code available from the official repositories: https://www.ffmpeg.org/download.html#repositories
 ## I am using FFmpeg unmodified and so no source changes have been made.
+##
+## ffmpeg version N-93109-g6174686bc3 Copyright (c) 2000-2019 the FFmpeg developers. I take no credit for their
+## hard work and dedication.
+##
 ## If you are an FFmpeg developer/team member/etc and I have not properly accredited your work, please advise
 ## me how to correct it and I will be happy to oblige.
 
@@ -34,32 +38,34 @@ import ffmpeg_encoded
 downloadList = []
 convertList = []
 threads = []
+dir = os.getcwd()
 
-#check if ran with arguments
+#program introduction
+print("Welcome to YT2MP3.\nAutomatically downloads "
+      "and converts YouTube videos to MP3 format.\n"
+      "No malware, no nonsense, just a clean and "
+      "simple, open-source client.")
 
-#if first argument is present, use it as directory instead of current directory
-try:
-    dir = sys.argv[1]
-except IndexError:
-    dir = os.getcwd()
-
-#make sure directory is valid by checking if it exists
-if not os.path.isdir(dir):
-    print("Directory provided is invalid. Defaulting to current working directory.")
-    dir = os.getcwd()
-
-
-
+#function to download mp4s from urls provided
 def Download_mp4(url,downloadList):
-    print("[{0} of {1}] {2} Downloading...".format(downloadList.index(url)+1,downloadList.index(max(url)),url))
-    pt.YouTube(url).streams.first().download()
-    print("[{0} of {1}] {2} Complete.".format(downloadList.index(url)+1,downloadList.index(max(url)),url))
+    print("[{0} of {1}] {2} Downloading...".format(downloadList.index(url)+1,len(downloadList),url))
 
+    try:
+        pt.YouTube(url).streams.first().download()
+    except:
+        print("{0} is not a complete, valid youtube link.".format(url))
+
+    print("[{0} of {1}] {2} Complete.".format(downloadList.index(url)+1,len(downloadList),url))
+
+#function to use ffmpeg to convert mp4 to mp3
 def Convert_mp3(file, path):
     newfile = file.split(".")[0] + ".mp3"
-    result = subprocess.call([path, "-i", file, newfile])
+    print("Converting {0} -> {1}".format(file,newfile))
+    result = subprocess.call([path, "-i", file, newfile], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     os.remove(os.getcwd() + "\\" + file)
+    print("Converted {0} -> {1}".format(file,newfile))
 
+#function to start all threads in a provided list of threads
 def start_threads(threads):
     for thread in threads:
         thread.start()
@@ -67,6 +73,7 @@ def start_threads(threads):
     for thread in threads:
         thread.join()
 
+#start a list of entries to process
 while True:
     video = input("Paste a youtube link and hit enter, or leave blank to begin converting:\n")
     if video != "":
@@ -76,6 +83,8 @@ while True:
         print("Finished adding videos to be downloaded.")
         break
 
+#build a thread list to utilize pytube library to download as many
+#videos as possible at once
 for url in downloadList:
     thread = Thread(target = Download_mp4, args = (url,downloadList))
     threads.append(thread)
@@ -94,6 +103,8 @@ os.write(fd, code)
 os.close(fd)
 print("Unpack Complete")
 
+#build a thread list to utilize ffmpeg to convert as many
+#videos as possible at once
 for file in os.listdir(dir):
     if file.endswith(".mp4"):
         print("Queueing file {0} for conversion.".format(file))
@@ -104,4 +115,4 @@ start_threads(threads)
 
 os.remove(path)
 
-print("Finished.")
+print("---YT2MP3 Finished---")
