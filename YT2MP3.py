@@ -45,7 +45,10 @@ version = "1.0"
 print("Welcome to YT2MP3 v{0}.\nAutomatically downloads "
       "and converts YouTube videos to MP3 format.\n"
       "No malware, no nonsense, just a clean and "
-      "simple, open-source client.".format(version))
+      "simple, open-source client.\n\nWARNING: This "
+      "will convert and delete >ALL< mp4 files in the "
+      "same directory as YT2MP3!\nNot just those that "
+      "are downloaded by YT2MP3!\n".format(version))
 
 #function to download mp4s from urls provided
 def Download_mp4(url,downloadList):
