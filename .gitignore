@@ -15,6 +15,7 @@ __pycache__/
 *.pyproj
 *.exe*
 *.ico
+*.bat
 build/
 develop-eggs/
 dist/

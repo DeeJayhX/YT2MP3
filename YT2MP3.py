@@ -15,7 +15,8 @@
 ## Using FFMPEG by the FFmpeg team.
 ## Purpose in this project: Convert mp4 files to mp3 audio.
 ## Website: https://www.ffmpeg.org/
-## Build: ffmpeg-20190211-6174686-win64-static
+## 32-bit Build: ffmpeg-20190211-6174686-win32-static
+## 64-bit Build: ffmpeg-20190211-6174686-win64-static
 ## Source code available from the official repositories: https://www.ffmpeg.org/download.html#repositories
 ## I am using FFmpeg unmodified and so no source changes have been made.
 ##
@@ -26,20 +27,22 @@
 ## me how to correct it and I will be happy to oblige.
 
 from threading import Thread
+from platform import machine
 import pytube as pt
 import sys
 import os
 import tempfile
 import base64
 import subprocess
-import ffmpeg_encoded
+import ffmpeg64_encoded
+import ffmpeg32_encoded
 
 #Instantiate variables
 downloadList = []
 convertList = []
 threads = []
 dir = os.getcwd()
-version = "1.0"
+version = "1.1"
 
 #program introduction
 print("Welcome to YT2MP3 v{0}.\nAutomatically downloads "
@@ -102,7 +105,12 @@ threads = []
 ##Unpack ffmpeg
 print("Unpacking ffmpeg.")
 fd, path = tempfile.mkstemp(suffix='.exe')
-code = base64.b64decode(ffmpeg_encoded.encoded)
+if machine().endswith('64'): #Determine if 32 or 64 bit and unpack appropriate binary
+    print("System is 64-bit. Using 64-bit binary.")
+    code = base64.b64decode(ffmpeg64_encoded.encoded64)
+else:
+    print("System is 32-bit. Using 32-bit binary.")
+    code = base64.b64decode(ffmpeg32_encoded.encoded32)
 os.write(fd, code)
 os.close(fd)
 print("Unpack Complete")

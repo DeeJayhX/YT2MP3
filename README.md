@@ -1,6 +1,6 @@
 # YT2MP3
-## Windows 7 or Newer, 64-bit only
-## Does not currently support 32-bit, linux, mac, or any other OS
+## Windows 7 or Newer, 32 or 64 bit
+## Does not currently support Linux, MacOS, or any other OS
 Automatically downloads and converts YouTube videos to MP3 format.
 No malware, no nonsense, just a clean and simple, open-source client.
 
@@ -8,7 +8,13 @@ No malware, no nonsense, just a clean and simple, open-source client.
 
 By using YT2MP3 you accept the LICENSE and FFMPEG_LICENSE included with YT2MP3
 
+If you are running a 32-bit system you must use the x86 (32-bit) version. If you
+are on a 64-bit system, you may use either, however, the 64-bit version of FFmpeg
+will be utilized in the conversions from mp4 to mp3.
+
 #### Releases
+
+The latest release can be found here: https://github.com/Ruined1/YT2MP3/releases
 
 - Extract the executable into the folder you want your MP3s to end up in.
 - Run the executable, which will start up and ask you to enter a youtube link.
